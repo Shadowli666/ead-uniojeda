@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <script src="https://kit.fontawesome.com/7a6221e2a1.js" crossorigin="anonymous"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <title>Registro de Estudiantes</title>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasmenu" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="form-check form-switch ms-auto mt-2 me-2">
+                    <label class="form-check-label ms-3" for="lightSwitch">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-brightness-high" viewBox="0 0 16 16">
+                            <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z" />
+                        </svg>
+                    </label>
+                    <input class="form-check-input" type="checkbox" id="lightSwitch" />
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container-fluid min-vh-100">
+        <div class="text-center">
+            <h1>SISEAD - REGISTRO DE PROFESORES</h1>
+        </div>
+        <div class="form-container container my-5">
+            <form action="POST">
+                <h2>Datos del Profesor</h2>
+                <div class="row">
+                    <div class="col">
+                        <label for="cedula" class="form-label">Cédula:</label>
+                        <div class="mb-3 input-group">
+                            <input type="text" name="cedula" id="cedula" class="form-control">
+                            <button class="btn btn-outline-primary" type="button" id="button-addon2">BUSCAR</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nombres:</label>
+                        <input type="text" name="name" id="name" class="form-control" disabled>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label for="lastname" class="form-label">Apellidos:</label>
+                        <input type="text" name="lastname" id="lastname" class="form-control" disabled>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <button class="btn btn-success">Agregar materia</button>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- offcanvas -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasmenu" aria-labelledby="offcanvas">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvas">SISEAD</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <ul>
+            <li>
+                <button class="btn btn-primary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#collapseStudents" aria-expanded="false" aria-controls="collapseStudents">
+                    Estudiantes
+                </button>
+                <div class="collapse" id="collapseStudents">
+                    <div class="card card-body">
+                        <ul>
+                            <li><button class="btn btn-secondary w-100">Datos de Estudiantes</button></li>
+                            <li><button class="btn btn-secondary w-100">Inscripción de Materias</button></li>
+                            <li><button class="btn btn-secondary w-100">Horarios</button></li>
+                            <li><button class="btn btn-secondary w-100">Notas</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <button class="btn btn-primary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#collapseProffesors" aria-expanded="false" aria-controls="collapseStudents">
+                    Profesores
+                </button>
+                <div class="collapse" id="collapseProffesors">
+                    <div class="card card-body">
+                        <ul>
+                            <li><button class="btn btn-secondary w-100">Datos de Profesores</button></li>
+                            <li><button class="btn btn-secondary w-100">Asignación de Materias</button></li>
+                            <li><button class="btn btn-secondary w-100">Horarios</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li><button class="btn btn-primary w-100">Parámetros del sistema</button></li>
+        </ul>
+    </div>
+</div>
+<!-- offcanvas end -->
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+<script src="colorModeToggler.js"></script>
+</body>
+</html>
