@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-02-2023 a las 16:36:40
--- Versión del servidor: 10.1.38-MariaDB
--- Versión de PHP: 7.3.2
+-- Tiempo de generación: 27-02-2023 a las 07:50:25
+-- Versión del servidor: 10.4.24-MariaDB
+-- Versión de PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -44,7 +43,7 @@ CREATE TABLE `datosestudiantes` (
   `nombres` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
   `apellidos` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
   `cedula` int(12) NOT NULL,
-  `procedencia` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
+  `procedencia` int(11) NOT NULL,
   `carrera` int(11) NOT NULL,
   `pais` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
   `telefono` varchar(25) COLLATE utf8_spanish_ci NOT NULL,
@@ -100,6 +99,17 @@ CREATE TABLE `periodo` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `procedencia`
+--
+
+CREATE TABLE `procedencia` (
+  `id` int(11) NOT NULL,
+  `nombre_procedencia` varchar(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `profesores`
 --
 
@@ -126,6 +136,7 @@ ALTER TABLE `carreras`
 --
 ALTER TABLE `datosestudiantes`
   ADD PRIMARY KEY (`id`),
+  ADD KEY `procedencia` (`procedencia`),
   ADD KEY `carrera` (`carrera`);
 
 --
@@ -150,6 +161,12 @@ ALTER TABLE `notaestudiantes`
 -- Indices de la tabla `periodo`
 --
 ALTER TABLE `periodo`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `procedencia`
+--
+ALTER TABLE `procedencia`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -193,6 +210,12 @@ ALTER TABLE `periodo`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `procedencia`
+--
+ALTER TABLE `procedencia`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `profesores`
 --
 ALTER TABLE `profesores`
@@ -206,7 +229,8 @@ ALTER TABLE `profesores`
 -- Filtros para la tabla `datosestudiantes`
 --
 ALTER TABLE `datosestudiantes`
-  ADD CONSTRAINT `datosestudiantes_ibfk_1` FOREIGN KEY (`carrera`) REFERENCES `carreras` (`id`);
+  ADD CONSTRAINT `datosestudiantes_ibfk_1` FOREIGN KEY (`procedencia`) REFERENCES `procedencia` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `datosestudiantes_ibfk_2` FOREIGN KEY (`carrera`) REFERENCES `carreras` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `materias`
